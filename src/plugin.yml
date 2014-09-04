@@ -1,0 +1,7 @@
+name: AdminPlus
+description: AdminPlus
+main: com.connorlinfoot.adminplus.Main
+version: 0.1
+commands:
+  admin:
+    description: Open the admin menu from Admin Plus

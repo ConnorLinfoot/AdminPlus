@@ -1,0 +1,7 @@
+Send Stats: true
+Kick Players:
+  Enabled: true
+  Command Format: "kick <player> <reason>"
+Ban Players:
+  Enabled: true
+  Command Format: "ban <player> <reason>"
