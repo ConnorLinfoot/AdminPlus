@@ -69,6 +69,15 @@ public class MainMenu {
             inv.setItem(21, is);
         }
 
+        // OP a Player icon (If set in config)
+        if( Main.getInstance().getConfig().getBoolean("OP Players.Enabled") ) {
+            is = new ItemStack(Material.DIAMOND);
+            im = is.getItemMeta();
+            im.setDisplayName(ChatColor.WHITE + "OP a Player");
+            is.setItemMeta(im);
+            inv.setItem(23, is);
+        }
+
         Integer ii = 0;
         for( ItemStack i : inv.getContents() ){
             if( i == null ){

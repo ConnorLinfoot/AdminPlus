@@ -1,9 +1,6 @@
 package com.connorlinfoot.adminplus.Listeners;
 
-import com.connorlinfoot.adminplus.Handlers.BanPlayerMenu;
-import com.connorlinfoot.adminplus.Handlers.ChangeDifficultyMenu;
-import com.connorlinfoot.adminplus.Handlers.ChangeTimeMenu;
-import com.connorlinfoot.adminplus.Handlers.KickPlayerMenu;
+import com.connorlinfoot.adminplus.Handlers.*;
 import com.connorlinfoot.adminplus.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -33,6 +30,14 @@ public class MainMenuListener implements Listener {
                     @Override
                     public void run() {
                         ChangeDifficultyMenu.openChangeDifficultyMenu(p);
+                    }
+                }, 1L);
+            } else if( e.getCurrentItem().getItemMeta().getDisplayName().contains("OP a Player") ) {
+                p.closeInventory();
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(),new Runnable() {
+                    @Override
+                    public void run() {
+                        OPPlayerMenu.openOPMenu(p);
                     }
                 }, 1L);
             } else if( e.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player") ) {
