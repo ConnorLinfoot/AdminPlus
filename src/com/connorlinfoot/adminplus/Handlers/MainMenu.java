@@ -32,6 +32,23 @@ public class MainMenu {
         is.setItemMeta(sm);
         inv.setItem(0,is);
 
+        // Change time icon (If set in config)
+        if( Main.getInstance().getConfig().getBoolean("Change Time.Enabled") ) {
+            is = new ItemStack(Material.WATCH);
+            im = is.getItemMeta();
+            im.setDisplayName(ChatColor.WHITE + "Change Time");
+            is.setItemMeta(im);
+            inv.setItem(11, is);
+        }
+
+        // Change time icon (If set in config)
+        if( Main.getInstance().getConfig().getBoolean("Change Difficulty.Enabled") ) {
+            is = new ItemStack(Material.MOB_SPAWNER);
+            im = is.getItemMeta();
+            im.setDisplayName(ChatColor.WHITE + "Change Difficulty");
+            is.setItemMeta(im);
+            inv.setItem(12, is);
+        }
 
         // Kick a Player icon (If set in config)
         if( Main.getInstance().getConfig().getBoolean("Kick Players.Enabled") ) {

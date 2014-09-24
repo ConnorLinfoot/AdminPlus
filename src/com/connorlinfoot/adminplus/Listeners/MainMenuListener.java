@@ -1,6 +1,7 @@
 package com.connorlinfoot.adminplus.Listeners;
 
 import com.connorlinfoot.adminplus.Handlers.BanPlayerMenu;
+import com.connorlinfoot.adminplus.Handlers.ChangeTimeMenu;
 import com.connorlinfoot.adminplus.Handlers.KickPlayerMenu;
 import com.connorlinfoot.adminplus.Main;
 import org.bukkit.Bukkit;
@@ -17,7 +18,15 @@ public class MainMenuListener implements Listener {
         if( e.getInventory().getTitle().equals("AdminPlus - V" + Main.getInstance().getDescription().getVersion()) ){
             if( e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR ) return;
             final Player p = (Player) e.getWhoClicked();
-            if( e.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player") ) {
+            if( e.getCurrentItem().getItemMeta().getDisplayName().contains("Change Time") ) {
+                p.closeInventory();
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(),new Runnable() {
+                    @Override
+                    public void run() {
+                        ChangeTimeMenu.openChangeTimeMenu(p);
+                    }
+                }, 1L);
+            } else if( e.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player") ) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override

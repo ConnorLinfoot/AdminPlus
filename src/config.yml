@@ -5,3 +5,7 @@ Kick Players:
 Ban Players:
   Enabled: true
   Command Format: "ban <player> <reason>"
+Change Time:
+  Enabled: true
+Change Difficulty:
+  Enabled: true
