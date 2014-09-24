@@ -75,7 +75,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "OP a Player");
             is.setItemMeta(im);
-            inv.setItem(23, is);
+            inv.setItem(22, is);
         }
 
         Integer ii = 0;
