@@ -6,6 +6,8 @@ commands:
   admin:
     description: Open the admin menu from Admin Plus
 permissons:
+  adminplus.use:
+    default: op
   adminplus.changetime:
     default: op
   adminplus.changedifficulty:

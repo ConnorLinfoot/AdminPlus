@@ -39,7 +39,7 @@ public class Main extends JavaPlugin implements Listener {
         }
 
         console.sendMessage(ChatColor.GREEN + "============ AdminPlus! ============");
-        console.sendMessage(ChatColor.GREEN + "=========== VERSION: " + getDescription().getDescription() + " ===========");
+        console.sendMessage(ChatColor.GREEN + "=========== VERSION: " + getDescription().getVersion() + " ===========");
         console.sendMessage(ChatColor.GREEN + "======== BY CONNOR LINFOOT! ========");
 
         Bukkit.getPluginManager().registerEvents(new MainMenuListener(), this);
@@ -51,9 +51,15 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if( sender instanceof Player ){
+        if (sender instanceof Player) {
             Player p = (Player) sender;
-            MainMenu.openMainMenu(p);
+            if (p.hasPermission("adminplus.use")) {
+                MainMenu.openMainMenu(p);
+            } else {
+                p.sendMessage(ChatColor.RED + "You do not have the permission " + ChatColor.BOLD + "\"adminplus.use\"");
+            }
+        } else {
+            sender.sendMessage("Please use this command as a player");
         }
         return true;
     }
