@@ -1,13 +1,18 @@
 Send Stats: true
 Kick Players:
   Enabled: true
+  Use Perms: true
   Command Format: "kick <player> <reason>"
 Ban Players:
   Enabled: true
+  Use Perms: true
   Command Format: "ban <player> <reason>"
 Change Time:
   Enabled: true
+  Use Perms: true
 Change Difficulty:
   Enabled: true
+  Use Perms: true
 OP Players:
   Enabled: true
+  Use Perms: true

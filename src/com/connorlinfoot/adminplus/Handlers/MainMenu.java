@@ -38,7 +38,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Change Time");
             is.setItemMeta(im);
-            inv.setItem(11, is);
+            if( p.hasPermission("adminplus.changetime") || !Main.getInstance().getConfig().getBoolean("Change Time.Use Perms") ) inv.setItem(11, is);
         }
 
         // Change time icon (If set in config)
@@ -47,7 +47,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Change Difficulty");
             is.setItemMeta(im);
-            inv.setItem(12, is);
+            if( p.hasPermission("adminplus.changedifficulty") || !Main.getInstance().getConfig().getBoolean("Change Difficulty.Use Perms") ) inv.setItem(12, is);
         }
 
         // Kick a Player icon (If set in config)
@@ -56,7 +56,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Kick a Player");
             is.setItemMeta(im);
-            inv.setItem(20, is);
+            if( p.hasPermission("adminplus.kickplayers") || !Main.getInstance().getConfig().getBoolean("Kick Players.Use Perms") ) inv.setItem(20, is);
         }
 
 
@@ -66,7 +66,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Ban a Player");
             is.setItemMeta(im);
-            inv.setItem(21, is);
+            if( p.hasPermission("adminplus.banplayers") || !Main.getInstance().getConfig().getBoolean("Ban Players.Use Perms") ) inv.setItem(21, is);
         }
 
         // OP a Player icon (If set in config)
@@ -75,7 +75,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "OP a Player");
             is.setItemMeta(im);
-            inv.setItem(22, is);
+            if( p.hasPermission("adminplus.opplayers") || !Main.getInstance().getConfig().getBoolean("OP Players.Use Perms") ) inv.setItem(22, is);
         }
 
         Integer ii = 0;

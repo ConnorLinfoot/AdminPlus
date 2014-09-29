@@ -5,3 +5,14 @@ version: 0.1
 commands:
   admin:
     description: Open the admin menu from Admin Plus
+permissons:
+  adminplus.changetime:
+    default: op
+  adminplus.changedifficulty:
+    default: op
+  adminplus.kickplayers:
+    default: op
+  adminplus.banplayers:
+    default: op
+  adminplus.opplayers:
+    default: op
