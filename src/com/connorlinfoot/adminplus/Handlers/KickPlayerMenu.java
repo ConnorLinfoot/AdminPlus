@@ -11,31 +11,31 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class KickPlayerMenu {
 
-    public static Inventory kickMenuInventory(Player p){
+    public static Inventory kickMenuInventory(Player p) {
         //Work out players for inv size
         Integer invSize = 0;
-        if( Bukkit.getOnlinePlayers().length <= 9 ){
+        if (Bukkit.getOnlinePlayers().length <= 9) {
             invSize = 9;
-        } else if( Bukkit.getOnlinePlayers().length <= 18 ){
+        } else if (Bukkit.getOnlinePlayers().length <= 18) {
             invSize = 18;
-        } else if( Bukkit.getOnlinePlayers().length <= 27 ){
+        } else if (Bukkit.getOnlinePlayers().length <= 27) {
             invSize = 27;
-        } else if( Bukkit.getOnlinePlayers().length <= 36 ){
+        } else if (Bukkit.getOnlinePlayers().length <= 36) {
             invSize = 36;
-        } else if( Bukkit.getOnlinePlayers().length <= 45 ){
+        } else if (Bukkit.getOnlinePlayers().length <= 45) {
             invSize = 45;
         } else {
             invSize = 54;
         }
 
-        Inventory inv = Bukkit.createInventory( p,invSize,"Kick Player - AdminPlus" );
+        Inventory inv = Bukkit.createInventory(p, invSize, "Kick Player - AdminPlus");
 
         ItemStack is;
         ItemMeta im;
 
         Integer i = 0;
-        for( Player pp : Bukkit.getOnlinePlayers() ){
-            if( i == 55 ){
+        for (Player pp : Bukkit.getOnlinePlayers()) {
+            if (i == 55) {
                 break;
             }
             is = new ItemStack(Material.SKULL_ITEM);
@@ -44,18 +44,18 @@ public class KickPlayerMenu {
             sm.setOwner(pp.getName());
             sm.setDisplayName(ChatColor.WHITE + "Kick " + pp.getName());
             is.setItemMeta(sm);
-            inv.setItem(i,is);
+            inv.setItem(i, is);
             i++;
         }
 
-        if( i == 55 ){
+        if (i == 55) {
             p.sendMessage("Oops, too many players, will fix this when I'm less lazy");
         }
 
         return inv;
     }
 
-    public static void openKickMenu(Player p){
+    public static void openKickMenu(Player p) {
         p.openInventory(kickMenuInventory(p));
     }
 

@@ -15,8 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-
 
 public class Main extends JavaPlugin implements Listener {
     private static Plugin instance;
@@ -28,19 +26,14 @@ public class Main extends JavaPlugin implements Listener {
         Server server = getServer();
         ConsoleCommandSender console = server.getConsoleSender();
 
-        if(getConfig().getBoolean( "Send Stats" )) {
-            try {
-                Metrics metrics = new Metrics(this);
-                metrics.start();
-                console.sendMessage("MC Stats (Metrics) is enabled!");
-            } catch (IOException e) {
-                // Failed to submit the stats :-( <-- Dat face doe
-            }
-        }
-
-        console.sendMessage(ChatColor.GREEN + "============ AdminPlus! ============");
-        console.sendMessage(ChatColor.GREEN + "=========== VERSION: " + getDescription().getVersion() + " ===========");
-        console.sendMessage(ChatColor.GREEN + "======== BY CONNOR LINFOOT! ========");
+        console.sendMessage("");
+        console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        console.sendMessage("");
+        console.sendMessage(ChatColor.AQUA + getDescription().getName());
+        console.sendMessage(ChatColor.AQUA + "Version " + getDescription().getVersion());
+        console.sendMessage("");
+        console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        console.sendMessage("");
 
         Bukkit.getPluginManager().registerEvents(new MainMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new BanPlayerMenuListener(), this);
