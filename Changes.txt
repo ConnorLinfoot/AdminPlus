@@ -1,0 +1,3 @@
+Version 1.0.1
+  - Removed "Send Stats" option from config.
+  - Added prefix to all messages sent

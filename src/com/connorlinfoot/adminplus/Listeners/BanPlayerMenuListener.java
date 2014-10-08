@@ -33,7 +33,7 @@ public class BanPlayerMenuListener implements Listener {
                     currentlyBannning.put(p.getName(), pName);
                     e.setCancelled(true);
                     p.closeInventory();
-                    p.sendMessage("Please type your reason in chat (This is not shown to players in actual chat)");
+                    p.sendMessage(Main.Prefix + "Please type your reason in chat (This is not shown to players in actual chat)");
                     return;
                 } else {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
@@ -50,7 +50,7 @@ public class BanPlayerMenuListener implements Listener {
             command = command.replace("<player>", currentlyBannning.get(e.getPlayer().getName()));
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("<reason>", e.getMessage()));
             e.setCancelled(true);
-            e.getPlayer().sendMessage(currentlyBannning.get(e.getPlayer().getName()) + " has been banned!");
+            e.getPlayer().sendMessage(Main.Prefix + currentlyBannning.get(e.getPlayer().getName()) + " has been banned!");
             currentlyBannning.remove(e.getPlayer().getName());
         }
     }

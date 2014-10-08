@@ -33,7 +33,7 @@ public class KickPlayerMenuListener implements Listener {
                     currentlyKicking.put(p.getName(), pName);
                     e.setCancelled(true);
                     p.closeInventory();
-                    p.sendMessage("Please type your reason in chat (This is not shown to players in actual chat)");
+                    p.sendMessage(Main.Prefix + "Please type your reason in chat (This is not shown to players in actual chat)");
                     return;
                 } else {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
@@ -50,7 +50,7 @@ public class KickPlayerMenuListener implements Listener {
             command = command.replace("<player>", currentlyKicking.get(e.getPlayer().getName()));
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("<reason>", e.getMessage()));
             e.setCancelled(true);
-            e.getPlayer().sendMessage(currentlyKicking.get(e.getPlayer().getName()) + " has been kicked!");
+            e.getPlayer().sendMessage(Main.Prefix + currentlyKicking.get(e.getPlayer().getName()) + " has been kicked!");
             currentlyKicking.remove(e.getPlayer().getName());
         }
     }

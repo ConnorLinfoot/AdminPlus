@@ -1,5 +1,6 @@
 package com.connorlinfoot.adminplus.Listeners;
 
+import com.connorlinfoot.adminplus.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,7 +19,7 @@ public class OPPlayerMenuListener implements Listener {
                 String pName = e.getCurrentItem().getItemMeta().getDisplayName().substring(5);
                 if (Bukkit.getPlayer(pName) == null) return;
                 Bukkit.getPlayer(pName).setOp(true);
-                p.sendMessage(pName + " is now op");
+                p.sendMessage(Main.Prefix + pName + " is now op");
             }
             e.setCancelled(true);
         }

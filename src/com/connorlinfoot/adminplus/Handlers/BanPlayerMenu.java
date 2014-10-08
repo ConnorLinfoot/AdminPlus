@@ -1,5 +1,6 @@
 package com.connorlinfoot.adminplus.Handlers;
 
+import com.connorlinfoot.adminplus.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -49,7 +50,7 @@ public class BanPlayerMenu {
         }
 
         if (i == 55) {
-            p.sendMessage("Oops, too many players, will fix this when I'm less lazy");
+            p.sendMessage(Main.Prefix + "Oops, too many players, will fix this when I'm less lazy");
         }
 
         return inv;

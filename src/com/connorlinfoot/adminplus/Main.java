@@ -18,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
     private static Plugin instance;
+    public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "AdminPlus" + ChatColor.GRAY + "] " + ChatColor.WHITE;
 
     public void onEnable() {
         instance = this;
@@ -25,6 +26,8 @@ public class Main extends JavaPlugin implements Listener {
         saveConfig();
         Server server = getServer();
         ConsoleCommandSender console = server.getConsoleSender();
+
+        if (getConfig().isSet("Send Stats")) getConfig().set("Send Stats", null); // Remove Send Stats from config
 
         console.sendMessage("");
         console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -49,10 +52,10 @@ public class Main extends JavaPlugin implements Listener {
             if (p.hasPermission("adminplus.use")) {
                 MainMenu.openMainMenu(p);
             } else {
-                p.sendMessage(ChatColor.RED + "You do not have the permission " + ChatColor.BOLD + "\"adminplus.use\"");
+                p.sendMessage(Prefix + ChatColor.RED + "You do not have the permission " + ChatColor.BOLD + "\"adminplus.use\"");
             }
         } else {
-            sender.sendMessage("Please use this command as a player");
+            sender.sendMessage(Prefix + "Please use this command as a player");
         }
         return true;
     }
