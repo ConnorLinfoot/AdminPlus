@@ -1,9 +1,7 @@
 package com.connorlinfoot.adminplus;
 
 import com.connorlinfoot.adminplus.Handlers.MainMenu;
-import com.connorlinfoot.adminplus.Listeners.BanPlayerMenuListener;
-import com.connorlinfoot.adminplus.Listeners.KickPlayerMenuListener;
-import com.connorlinfoot.adminplus.Listeners.MainMenuListener;
+import com.connorlinfoot.adminplus.Listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -41,8 +39,8 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new MainMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new BanPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new KickPlayerMenuListener(), this);
-
-
+        Bukkit.getPluginManager().registerEvents(new ChangeTimeMenuListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ChangeDifficultyMenuListener(), this);
     }
 
     @Override

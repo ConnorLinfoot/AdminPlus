@@ -10,8 +10,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ChangeDifficultyMenu {
 
-    public static Inventory changeDifficultyMenuInventory(Player p) {
-        Inventory inv = Bukkit.createInventory(p, 9, "Change Difficulty - AdminPlus");
+    public static Inventory changeDifficultyMenuInventory(Player player) {
+        Inventory inv = Bukkit.createInventory(player, 9, "Change Difficulty - AdminPlus");
 
         ItemStack is;
         ItemMeta im;
@@ -43,8 +43,8 @@ public class ChangeDifficultyMenu {
         return inv;
     }
 
-    public static void openChangeDifficultyMenu(Player p) {
-        p.openInventory(changeDifficultyMenuInventory(p));
+    public static void openChangeDifficultyMenu(Player player) {
+        player.openInventory(changeDifficultyMenuInventory(player));
     }
 
 }

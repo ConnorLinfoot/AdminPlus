@@ -10,15 +10,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ChangeTimeMenu {
 
-    public static Inventory changeTimeMenuInventory(Player p) {
-        Inventory inv = Bukkit.createInventory(p, 9, "Change Time - AdminPlus");
+    public static Inventory changeTimeMenuInventory(Player player) {
+        Inventory inv = Bukkit.createInventory(player, 9, "Change Time - AdminPlus");
 
         ItemStack is;
         ItemMeta im;
 
         is = new ItemStack(Material.WATCH, 1);
         im = is.getItemMeta();
-        im.setDisplayName(ChatColor.WHITE + "Midnight (0)");
+        im.setDisplayName(ChatColor.WHITE + "Midnight (18000)");
         is.setItemMeta(im);
         inv.addItem(is);
 
@@ -43,8 +43,8 @@ public class ChangeTimeMenu {
         return inv;
     }
 
-    public static void openChangeTimeMenu(Player p) {
-        p.openInventory(changeTimeMenuInventory(p));
+    public static void openChangeTimeMenu(Player player) {
+        player.openInventory(changeTimeMenuInventory(player));
     }
 
 }

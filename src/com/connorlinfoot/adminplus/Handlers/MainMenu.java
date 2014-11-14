@@ -12,8 +12,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class MainMenu {
 
-    public static Inventory mainMenuInventory(Player p) {
-        Inventory inv = Bukkit.createInventory(p, 45, "AdminPlus - V" + Main.getInstance().getDescription().getVersion());
+    public static Inventory mainMenuInventory(Player player) {
+        Inventory inv = Bukkit.createInventory(player, 45, "AdminPlus - V" + Main.getInstance().getDescription().getVersion());
 
         ItemStack is;
         ItemMeta im;
@@ -27,7 +27,7 @@ public class MainMenu {
         is = new ItemStack(Material.SKULL_ITEM);
         is.setDurability((short) 3);
         SkullMeta sm = (SkullMeta) is.getItemMeta();
-        sm.setOwner(p.getName());
+        sm.setOwner(player.getName());
         sm.setDisplayName(ChatColor.WHITE + "My Controls");
         is.setItemMeta(sm);
         inv.setItem(0, is);
@@ -38,7 +38,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Change Time");
             is.setItemMeta(im);
-            if (p.hasPermission("adminplus.changetime") || !Main.getInstance().getConfig().getBoolean("Change Time.Use Perms"))
+            if (player.hasPermission("adminplus.changetime") || !Main.getInstance().getConfig().getBoolean("Change Time.Use Perms"))
                 inv.setItem(11, is);
         }
 
@@ -48,7 +48,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Change Difficulty");
             is.setItemMeta(im);
-            if (p.hasPermission("adminplus.changedifficulty") || !Main.getInstance().getConfig().getBoolean("Change Difficulty.Use Perms"))
+            if (player.hasPermission("adminplus.changedifficulty") || !Main.getInstance().getConfig().getBoolean("Change Difficulty.Use Perms"))
                 inv.setItem(12, is);
         }
 
@@ -58,7 +58,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Kick a Player");
             is.setItemMeta(im);
-            if (p.hasPermission("adminplus.kickplayers") || !Main.getInstance().getConfig().getBoolean("Kick Players.Use Perms"))
+            if (player.hasPermission("adminplus.kickplayers") || !Main.getInstance().getConfig().getBoolean("Kick Players.Use Perms"))
                 inv.setItem(20, is);
         }
 
@@ -69,7 +69,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "Ban a Player");
             is.setItemMeta(im);
-            if (p.hasPermission("adminplus.banplayers") || !Main.getInstance().getConfig().getBoolean("Ban Players.Use Perms"))
+            if (player.hasPermission("adminplus.banplayers") || !Main.getInstance().getConfig().getBoolean("Ban Players.Use Perms"))
                 inv.setItem(21, is);
         }
 
@@ -79,7 +79,7 @@ public class MainMenu {
             im = is.getItemMeta();
             im.setDisplayName(ChatColor.WHITE + "OP a Player");
             is.setItemMeta(im);
-            if (p.hasPermission("adminplus.opplayers") || !Main.getInstance().getConfig().getBoolean("OP Players.Use Perms"))
+            if (player.hasPermission("adminplus.opplayers") || !Main.getInstance().getConfig().getBoolean("OP Players.Use Perms"))
                 inv.setItem(22, is);
         }
 
@@ -94,8 +94,8 @@ public class MainMenu {
         return inv;
     }
 
-    public static void openMainMenu(Player p) {
-        p.openInventory(mainMenuInventory(p));
+    public static void openMainMenu(Player player) {
+        player.openInventory(mainMenuInventory(player));
     }
 
 }

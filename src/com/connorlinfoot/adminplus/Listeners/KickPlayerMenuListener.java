@@ -16,12 +16,12 @@ public class KickPlayerMenuListener implements Listener {
     HashMap<String, String> currentlyKicking = new HashMap<String, String>();
 
     @EventHandler
-    public void onMainMenuClick(InventoryClickEvent e) {
-        if (e.getInventory().getTitle().equals("Kick Player - AdminPlus")) {
-            if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-            Player p = (Player) e.getWhoClicked();
-            if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Kick")) {
-                String pName = e.getCurrentItem().getItemMeta().getDisplayName().substring(7);
+    public void onMainMenuClick(InventoryClickEvent event) {
+        if (event.getInventory().getTitle().equals("Kick Player - AdminPlus")) {
+            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+            Player p = (Player) event.getWhoClicked();
+            if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Kick")) {
+                String pName = event.getCurrentItem().getItemMeta().getDisplayName().substring(7);
                 String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
                 boolean reason = false;
                 if (command.contains("<reason>")) {
@@ -31,7 +31,7 @@ public class KickPlayerMenuListener implements Listener {
 
                 if (reason) {
                     currentlyKicking.put(p.getName(), pName);
-                    e.setCancelled(true);
+                    event.setCancelled(true);
                     p.closeInventory();
                     p.sendMessage(Main.Prefix + "Please type your reason in chat (This is not shown to players in actual chat)");
                     return;
@@ -39,19 +39,25 @@ public class KickPlayerMenuListener implements Listener {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                 }
             }
-            e.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent e) {
-        if (currentlyKicking.containsKey(e.getPlayer().getName())) {
+    public void onChat(final AsyncPlayerChatEvent event) {
+        if (currentlyKicking.containsKey(event.getPlayer().getName())) {
             String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
-            command = command.replace("<player>", currentlyKicking.get(e.getPlayer().getName()));
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("<reason>", e.getMessage()));
-            e.setCancelled(true);
-            e.getPlayer().sendMessage(Main.Prefix + currentlyKicking.get(e.getPlayer().getName()) + " has been kicked!");
-            currentlyKicking.remove(e.getPlayer().getName());
+            command = command.replace("<player>", currentlyKicking.get(event.getPlayer().getName()));
+            final String finalCommand = command;
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                @Override
+                public void run() {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCommand.replaceAll("<reason>", event.getMessage()));
+                }
+            }, 1L);
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(Main.Prefix + currentlyKicking.get(event.getPlayer().getName()) + " has been kicked!");
+            currentlyKicking.remove(event.getPlayer().getName());
         }
     }
 

@@ -12,11 +12,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class MainMenuListener implements Listener {
 
     @EventHandler
-    public void onMainMenuClick(InventoryClickEvent e) {
-        if (e.getInventory().getTitle().equals("AdminPlus - V" + Main.getInstance().getDescription().getVersion())) {
-            if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-            final Player p = (Player) e.getWhoClicked();
-            if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Change Time")) {
+    public void onMainMenuClick(InventoryClickEvent event) {
+        if (event.getInventory().getTitle().equals("AdminPlus - V" + Main.getInstance().getDescription().getVersion())) {
+            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+            final Player p = (Player) event.getWhoClicked();
+            if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change Time")) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override
@@ -24,7 +24,7 @@ public class MainMenuListener implements Listener {
                         ChangeTimeMenu.openChangeTimeMenu(p);
                     }
                 }, 1L);
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Change Difficulty")) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change Difficulty")) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override
@@ -32,7 +32,7 @@ public class MainMenuListener implements Listener {
                         ChangeDifficultyMenu.openChangeDifficultyMenu(p);
                     }
                 }, 1L);
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("OP a Player")) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("OP a Player")) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override
@@ -40,7 +40,7 @@ public class MainMenuListener implements Listener {
                         OPPlayerMenu.openOPMenu(p);
                     }
                 }, 1L);
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player")) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player")) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override
@@ -48,7 +48,7 @@ public class MainMenuListener implements Listener {
                         BanPlayerMenu.openBanMenu(p);
                     }
                 }, 1L);
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Kick a Player")) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Kick a Player")) {
                 p.closeInventory();
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                     @Override
@@ -57,7 +57,7 @@ public class MainMenuListener implements Listener {
                     }
                 }, 1L);
             } else {
-                e.setCancelled(true);
+                event.setCancelled(true);
             }
         }
     }

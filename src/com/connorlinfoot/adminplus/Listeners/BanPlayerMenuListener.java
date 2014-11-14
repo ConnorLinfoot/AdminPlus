@@ -16,12 +16,12 @@ public class BanPlayerMenuListener implements Listener {
     HashMap<String, String> currentlyBannning = new HashMap<String, String>();
 
     @EventHandler
-    public void onMainMenuClick(InventoryClickEvent e) {
-        if (e.getInventory().getTitle().equals("Ban Player - AdminPlus")) {
-            if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-            Player p = (Player) e.getWhoClicked();
-            if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Ban")) {
-                String pName = e.getCurrentItem().getItemMeta().getDisplayName().substring(6);
+    public void onMainMenuClick(InventoryClickEvent event) {
+        if (event.getInventory().getTitle().equals("Ban Player - AdminPlus")) {
+            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+            Player p = (Player) event.getWhoClicked();
+            if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Ban")) {
+                String pName = event.getCurrentItem().getItemMeta().getDisplayName().substring(6);
                 if (Bukkit.getPlayer(pName) == null) return;
                 String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
                 boolean reason = false;
@@ -31,7 +31,7 @@ public class BanPlayerMenuListener implements Listener {
                 command = command.replace("<player>", pName);
                 if (reason) {
                     currentlyBannning.put(p.getName(), pName);
-                    e.setCancelled(true);
+                    event.setCancelled(true);
                     p.closeInventory();
                     p.sendMessage(Main.Prefix + "Please type your reason in chat (This is not shown to players in actual chat)");
                     return;
@@ -39,19 +39,19 @@ public class BanPlayerMenuListener implements Listener {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                 }
             }
-            e.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent e) {
-        if (currentlyBannning.containsKey(e.getPlayer().getName())) {
+    public void onChat(AsyncPlayerChatEvent event) {
+        if (currentlyBannning.containsKey(event.getPlayer().getName())) {
             String command = Main.getInstance().getConfig().getString("Ban Players.Command Format");
-            command = command.replace("<player>", currentlyBannning.get(e.getPlayer().getName()));
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("<reason>", e.getMessage()));
-            e.setCancelled(true);
-            e.getPlayer().sendMessage(Main.Prefix + currentlyBannning.get(e.getPlayer().getName()) + " has been banned!");
-            currentlyBannning.remove(e.getPlayer().getName());
+            command = command.replace("<player>", currentlyBannning.get(event.getPlayer().getName()));
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("<reason>", event.getMessage()));
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(Main.Prefix + currentlyBannning.get(event.getPlayer().getName()) + " has been banned!");
+            currentlyBannning.remove(event.getPlayer().getName());
         }
     }
 

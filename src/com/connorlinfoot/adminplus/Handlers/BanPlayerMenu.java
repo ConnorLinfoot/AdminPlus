@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class BanPlayerMenu {
 
-    public static Inventory banMenuInventory(Player p) {
+    public static Inventory banMenuInventory(Player player) {
         //Work out players for inv size
         Integer invSize = 0;
         if (Bukkit.getOnlinePlayers().length <= 9) {
@@ -29,7 +29,7 @@ public class BanPlayerMenu {
             invSize = 54;
         }
 
-        Inventory inv = Bukkit.createInventory(p, invSize, "Ban Player - AdminPlus");
+        Inventory inv = Bukkit.createInventory(player, invSize, "Ban Player - AdminPlus");
 
         ItemStack is;
         ItemMeta im;
@@ -50,14 +50,14 @@ public class BanPlayerMenu {
         }
 
         if (i == 55) {
-            p.sendMessage(Main.Prefix + "Oops, too many players, will fix this when I'm less lazy");
+            player.sendMessage(Main.Prefix + "Oops, too many players, will fix this when I'm less lazy");
         }
 
         return inv;
     }
 
-    public static void openBanMenu(Player p) {
-        p.openInventory(banMenuInventory(p));
+    public static void openBanMenu(Player player) {
+        player.openInventory(banMenuInventory(player));
     }
 
 }

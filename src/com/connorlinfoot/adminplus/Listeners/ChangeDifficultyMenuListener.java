@@ -9,30 +9,30 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class ChangeDifficultyMenuListener implements Listener {
 
     @EventHandler
-    public void onMainMenuClick(InventoryClickEvent e) {
-        if (e.getInventory().getTitle().equals("Change Difficulty - AdminPlus")) {
-            if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Peaceful")) {
-                if (e.getWhoClicked() instanceof Player) {
-                    Player p = (Player) e.getWhoClicked();
+    public void onMainMenuClick(InventoryClickEvent event) {
+        if (event.getInventory().getTitle().equals("Change Difficulty - AdminPlus")) {
+            if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Peaceful")) {
+                if (event.getWhoClicked() instanceof Player) {
+                    Player p = (Player) event.getWhoClicked();
                     p.getWorld().setDifficulty(Difficulty.PEACEFUL);
                 }
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Easy")) {
-                if (e.getWhoClicked() instanceof Player) {
-                    Player p = (Player) e.getWhoClicked();
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Easy")) {
+                if (event.getWhoClicked() instanceof Player) {
+                    Player p = (Player) event.getWhoClicked();
                     p.getWorld().setDifficulty(Difficulty.EASY);
                 }
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Normal")) {
-                if (e.getWhoClicked() instanceof Player) {
-                    Player p = (Player) e.getWhoClicked();
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Normal")) {
+                if (event.getWhoClicked() instanceof Player) {
+                    Player p = (Player) event.getWhoClicked();
                     p.getWorld().setDifficulty(Difficulty.NORMAL);
                 }
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Hard")) {
-                if (e.getWhoClicked() instanceof Player) {
-                    Player p = (Player) e.getWhoClicked();
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Hard")) {
+                if (event.getWhoClicked() instanceof Player) {
+                    Player p = (Player) event.getWhoClicked();
                     p.getWorld().setDifficulty(Difficulty.HARD);
                 }
             }
-            e.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 

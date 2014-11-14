@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class OPPlayerMenu {
 
-    public static Inventory opMenuInventory(Player p) {
+    public static Inventory opMenuInventory(Player player) {
         //Work out players for inv size
         Integer invSize = 0;
         if (Bukkit.getOnlinePlayers().length <= 9) {
@@ -29,7 +29,7 @@ public class OPPlayerMenu {
             invSize = 54;
         }
 
-        Inventory inv = Bukkit.createInventory(p, invSize, "OP Player - AdminPlus");
+        Inventory inv = Bukkit.createInventory(player, invSize, "OP Player - AdminPlus");
 
         ItemStack is;
         ItemMeta im;
@@ -51,14 +51,14 @@ public class OPPlayerMenu {
         }
 
         if (i == 55) {
-            p.sendMessage(Main.Prefix + "Oops, too many players, will fix this when I'm less lazy");
+            player.sendMessage(Main.Prefix + "Oops, too many players, will fix this when I'm less lazy");
         }
 
         return inv;
     }
 
-    public static void openOPMenu(Player p) {
-        p.openInventory(opMenuInventory(p));
+    public static void openOPMenu(Player player) {
+        player.openInventory(opMenuInventory(player));
     }
 
 }
