@@ -1,3 +1,9 @@
 Version 1.0.1
+  - Fixed difficulty options not working
+  - Fixed time options not working
+  - Fixed the kick event sometimes failing
+  - Cleaned code
+
+Version 1.0.1
   - Removed "Send Stats" option from config.
   - Added prefix to all messages sent
