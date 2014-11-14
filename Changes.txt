@@ -1,4 +1,4 @@
-Version 1.0.1
+Version 1.0.2
   - Fixed difficulty options not working
   - Fixed time options not working
   - Fixed the kick event sometimes failing
