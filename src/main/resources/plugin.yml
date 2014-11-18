@@ -1,6 +1,7 @@
 name: AdminPlus
 description: AdminPlus allows you to ban, kick, op and other tasks on your server
 main: com.connorlinfoot.adminplus.Main
+author: [Connor Linfoot]
 version: 1.1-SNAPSHOT
 commands:
   admin:
