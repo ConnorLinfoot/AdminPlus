@@ -16,7 +16,7 @@ import java.util.List;
 public class MainMenu {
 
     public static Inventory mainMenuInventory(Player player) {
-        Inventory inv = Bukkit.createInventory(player, 45, "AdminPlus - V" + Main.getInstance().getDescription().getVersion());
+        Inventory inv = Bukkit.createInventory(player, 45, "AdminPlus");
 
         ItemStack is;
         ItemMeta im;
@@ -34,7 +34,9 @@ public class MainMenu {
         sm.setDisplayName(ChatColor.WHITE + "AdminPlus");
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.GRAY + "Version: " + Main.getInstance().getDescription().getVersion());
-        if( Main.SNAPSHOT ) lore.add(ChatColor.RED + "Snapshot Build");
+        String authors = Main.getInstance().getDescription().getAuthors().toString().replaceAll("\\[", "").replaceAll("\\]", " ");
+        lore.add(ChatColor.GRAY + "Author: " + authors);
+        if (Main.SNAPSHOT) lore.add(ChatColor.RED + "Snapshot Build");
         is.setItemMeta(sm);
         inv.setItem(0, is);
 
