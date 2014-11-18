@@ -32,6 +32,10 @@ public class Main extends JavaPlugin implements Listener {
         console.sendMessage("");
         console.sendMessage(ChatColor.AQUA + getDescription().getName());
         console.sendMessage(ChatColor.AQUA + "Version " + getDescription().getVersion());
+        if( getDescription().getVersion().contains("SNAPSHOT") ){
+            server.getLogger().warning(ChatColor.RED + "You are running a snapshot build of " + getDescription().getName() + " please report bugs!");
+            server.getLogger().warning(ChatColor.RED + "NO support will be given if running old snapshot build!");
+        }
         console.sendMessage("");
         console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         console.sendMessage("");
