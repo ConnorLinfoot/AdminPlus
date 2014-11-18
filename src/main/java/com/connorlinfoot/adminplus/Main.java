@@ -17,6 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin implements Listener {
     private static Plugin instance;
     public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "AdminPlus" + ChatColor.GRAY + "] " + ChatColor.WHITE;
+    public static boolean SNAPSHOT = false;
 
     public void onEnable() {
         instance = this;
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin implements Listener {
         console.sendMessage(ChatColor.AQUA + getDescription().getName());
         console.sendMessage(ChatColor.AQUA + "Version " + getDescription().getVersion());
         if( getDescription().getVersion().contains("SNAPSHOT") ){
+            SNAPSHOT = true;
             server.getLogger().warning(ChatColor.RED + "You are running a snapshot build of " + getDescription().getName() + " please report bugs!");
             server.getLogger().warning(ChatColor.RED + "NO support will be given if running old snapshot build!");
         }

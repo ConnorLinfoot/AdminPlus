@@ -10,6 +10,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainMenu {
 
     public static Inventory mainMenuInventory(Player player) {
@@ -28,7 +31,10 @@ public class MainMenu {
         is.setDurability((short) 3);
         SkullMeta sm = (SkullMeta) is.getItemMeta();
         sm.setOwner(player.getName());
-        sm.setDisplayName(ChatColor.WHITE + "My Controls");
+        sm.setDisplayName(ChatColor.WHITE + "AdminPlus");
+        List<String> lore = new ArrayList<String>();
+        lore.add(ChatColor.GRAY + "Version: " + Main.getInstance().getDescription().getVersion());
+        if( Main.SNAPSHOT ) lore.add(ChatColor.RED + "Snapshot Build");
         is.setItemMeta(sm);
         inv.setItem(0, is);
 
