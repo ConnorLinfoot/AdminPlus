@@ -43,6 +43,7 @@ public class Main extends JavaPlugin implements Listener {
         console.sendMessage("");
 
         Bukkit.getPluginManager().registerEvents(new MainMenuListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new BanPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new KickPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChangeTimeMenuListener(), this);

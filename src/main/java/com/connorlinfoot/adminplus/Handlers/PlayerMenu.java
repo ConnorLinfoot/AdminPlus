@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 public class PlayerMenu {
 
@@ -25,7 +24,7 @@ public class PlayerMenu {
 
         // Top Left Main Menu Paper
         is = new ItemStack(Material.PAPER);
-        im = (SkullMeta) is.getItemMeta();
+        im = is.getItemMeta();
         im.setDisplayName(ChatColor.WHITE + "Main Menu");
         is.setItemMeta(im);
         inv.setItem(0, is);

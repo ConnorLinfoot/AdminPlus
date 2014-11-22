@@ -13,7 +13,7 @@ public class MainMenuListener implements Listener {
 
     @EventHandler
     public void onMainMenuClick(InventoryClickEvent event) {
-        if (event.getInventory().getTitle().equals("AdminPlus - V" + Main.getInstance().getDescription().getVersion())) {
+        if (event.getInventory().getTitle().equals("AdminPlus")) {
             if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
             final Player p = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change Time")) {
@@ -56,6 +56,15 @@ public class MainMenuListener implements Listener {
                         KickPlayerMenu.openKickMenu(p);
                     }
                 }, 1L);
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("AdminPlus")) {
+                p.closeInventory();
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        PlayerMenu.openPlayerMenu(p);
+                    }
+                }, 1L);
+                event.setCancelled(true);
             } else {
                 event.setCancelled(true);
             }
