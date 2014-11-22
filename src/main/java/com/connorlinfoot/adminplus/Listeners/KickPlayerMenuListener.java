@@ -22,7 +22,7 @@ public class KickPlayerMenuListener implements Listener {
             Player p = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Kick")) {
                 String pName = event.getCurrentItem().getItemMeta().getDisplayName().substring(7);
-                String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
+                String command = Main.getPlugin().getConfig().getString("Kick Players.Command Format");
                 boolean reason = false;
                 if (command.contains("<reason>")) {
                     reason = true;
@@ -46,10 +46,10 @@ public class KickPlayerMenuListener implements Listener {
     @EventHandler
     public void onChat(final AsyncPlayerChatEvent event) {
         if (currentlyKicking.containsKey(event.getPlayer().getName())) {
-            String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
+            String command = Main.getPlugin().getConfig().getString("Kick Players.Command Format");
             command = command.replace("<player>", currentlyKicking.get(event.getPlayer().getName()));
             final String finalCommand = command;
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                 @Override
                 public void run() {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCommand.replaceAll("<reason>", event.getMessage()));

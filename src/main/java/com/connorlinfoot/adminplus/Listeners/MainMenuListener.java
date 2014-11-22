@@ -18,7 +18,7 @@ public class MainMenuListener implements Listener {
             final Player p = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change Time")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         ChangeTimeMenu.openChangeTimeMenu(p);
@@ -26,7 +26,7 @@ public class MainMenuListener implements Listener {
                 }, 1L);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change Difficulty")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         ChangeDifficultyMenu.openChangeDifficultyMenu(p);
@@ -34,7 +34,7 @@ public class MainMenuListener implements Listener {
                 }, 1L);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("OP a Player")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         OPPlayerMenu.openOPMenu(p);
@@ -42,7 +42,7 @@ public class MainMenuListener implements Listener {
                 }, 1L);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Ban a Player")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         BanPlayerMenu.openBanMenu(p);
@@ -50,7 +50,7 @@ public class MainMenuListener implements Listener {
                 }, 1L);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Kick a Player")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         KickPlayerMenu.openKickMenu(p);
@@ -58,7 +58,7 @@ public class MainMenuListener implements Listener {
                 }, 1L);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("AdminPlus")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         PlayerMenu.openPlayerMenu(p);

@@ -23,7 +23,7 @@ public class BanPlayerMenuListener implements Listener {
             if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Ban")) {
                 String pName = event.getCurrentItem().getItemMeta().getDisplayName().substring(6);
                 if (Bukkit.getPlayer(pName) == null) return;
-                String command = Main.getInstance().getConfig().getString("Kick Players.Command Format");
+                String command = Main.getPlugin().getConfig().getString("Kick Players.Command Format");
                 boolean reason = false;
                 if (command.contains("<reason>")) {
                     reason = true;
@@ -46,7 +46,7 @@ public class BanPlayerMenuListener implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         if (currentlyBannning.containsKey(event.getPlayer().getName())) {
-            String command = Main.getInstance().getConfig().getString("Ban Players.Command Format");
+            String command = Main.getPlugin().getConfig().getString("Ban Players.Command Format");
             command = command.replace("<player>", currentlyBannning.get(event.getPlayer().getName()));
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("<reason>", event.getMessage()));
             event.setCancelled(true);

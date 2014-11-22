@@ -1,6 +1,5 @@
 package com.connorlinfoot.adminplus.Listeners;
 
-import com.connorlinfoot.adminplus.Handlers.*;
 import com.connorlinfoot.adminplus.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,7 +17,7 @@ public class PlayerMenuListener implements Listener {
             final Player p = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Change My Game Mode")) {
                 p.closeInventory();
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         p.sendMessage("Yeah I'm working on this...");

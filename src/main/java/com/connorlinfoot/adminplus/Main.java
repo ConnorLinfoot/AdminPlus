@@ -15,12 +15,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class Main extends JavaPlugin implements Listener {
-    private static Plugin instance;
-    public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "AdminPlus" + ChatColor.GRAY + "] " + ChatColor.WHITE;
+    private static Plugin plugin;
+    public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "AdminPlus" + ChatColor.GRAY + "] " + ChatColor.RESET;
     public static boolean SNAPSHOT = false;
 
     public void onEnable() {
-        instance = this;
+        plugin = this;
         getConfig().options().copyDefaults(true);
         saveConfig();
         Server server = getServer();
@@ -44,6 +44,7 @@ public class Main extends JavaPlugin implements Listener {
 
         Bukkit.getPluginManager().registerEvents(new MainMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerMenuListener(), this);
+        Bukkit.getPluginManager().registerEvents(new OPPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new BanPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new KickPlayerMenuListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChangeTimeMenuListener(), this);
@@ -69,7 +70,12 @@ public class Main extends JavaPlugin implements Listener {
         getLogger().info(getDescription().getName() + " has been disabled!");
     }
 
+    @Deprecated
     public static Plugin getInstance() {
-        return instance;
+        return getPlugin();
+    }
+
+    public static Plugin getPlugin() {
+        return plugin;
     }
 }
